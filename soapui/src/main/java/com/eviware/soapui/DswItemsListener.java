@@ -109,7 +109,11 @@ public class DswItemsListener implements WorkspaceListener, DesktopListener {
 			
 			try {
 				input = new FileInputStream(path);
-			} catch (FileNotFoundException e) {
+				if ((input != null) && (input.available() <= 0)) {
+				  UISupport.showInfoMessage("Configuration file dsw_soapui_projects.xml is empty, DSW menu will not be created");
+				  return null;
+				}
+			} catch (IOException e) {
 				UISupport.showInfoMessage("Configuration file dsw_soapui_projects.xml does not exist in application folder, DSW menu will not be created");
 			} 
 			
@@ -138,7 +142,9 @@ public class DswItemsListener implements WorkspaceListener, DesktopListener {
 		            	envMap.put(itemName,itemPath);
 		            }
 		        }
-		        return envMap;
+		        if (nodeList.getLength() > 0) {
+		          return envMap;
+		        }  
 			}
 			return null;
 		} finally {

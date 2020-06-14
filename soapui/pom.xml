@@ -16,6 +16,7 @@
     </parent>
 
     <artifactId>soapui</artifactId>
+    <version>5.5.0-dsw-01</version>
     <name>SoapUI</name>
     <url>http://www.soapui.org</url>
     <packaging>jar</packaging>

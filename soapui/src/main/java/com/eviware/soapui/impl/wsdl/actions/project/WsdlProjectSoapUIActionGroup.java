@@ -55,8 +55,7 @@ public class WsdlProjectSoapUIActionGroup extends AbstractSoapUIActionGroup<Wsdl
                     "EnabledWsdlProjectActions");
             SoapUIActionMappingList<WsdlProject> mappings = actionGroup.getActionMappings(project);
 
-            mappings.getMapping(SaveProjectAction.SOAPUI_ACTION_ID).setEnabled(
-                    !project.isRemote());
+            mappings.getMapping(SaveProjectAction.SOAPUI_ACTION_ID).setEnabled(!project.isRemote());
 //            mappings.getMapping(StartHermesJMS.SOAPUI_ACTION_ID).setEnabled(HermesUtils.isHermesJMSSupported());
 
             return mappings;

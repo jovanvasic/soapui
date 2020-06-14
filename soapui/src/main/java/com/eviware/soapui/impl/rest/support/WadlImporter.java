@@ -69,7 +69,7 @@ import java.util.List;
 import java.util.Map;
 
 public class WadlImporter {
-	public static final String IMPORT_MERGE_ADD_EXISTING_REQUEST = WadlImporter.class.getSimpleName() + "@add_duplicate_request_on_import";
+	  public static final String IMPORT_MERGE_ADD_EXISTING_REQUEST = WadlImporter.class.getSimpleName() + "@add_duplicate_request_on_import";
     private RestService service;
     private Application application;
     private List<Resources> resourcesList;
