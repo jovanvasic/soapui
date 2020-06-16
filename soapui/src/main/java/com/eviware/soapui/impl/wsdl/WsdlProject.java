@@ -746,8 +746,10 @@ public class WsdlProject extends AbstractTestPropertyHolderWsdlModelItem<Project
             createBackup(projectFile);
         }
 
-        // DSW Backup always executed
-        createDswBackup(projectFile);
+        // DSW Backup is always executed
+        if (projectFile.exists()) {
+          createDswBackup(projectFile);
+        }  
         
         SaveStatus saveStatus = saveIn(projectFile);
 

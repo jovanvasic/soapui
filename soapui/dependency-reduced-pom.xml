@@ -8,6 +8,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>soapui</artifactId>
   <name>SoapUI</name>
+  <version>5.5.0-dsw-01</version>
   <url>http://www.soapui.org</url>
   <build>
     <resources>
