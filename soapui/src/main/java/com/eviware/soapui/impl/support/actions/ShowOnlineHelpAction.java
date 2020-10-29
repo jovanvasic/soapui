@@ -26,7 +26,6 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.KeyStroke;
 import java.awt.event.ActionEvent;
-
 import static com.eviware.soapui.analytics.SoapUIActions.APPLY_TRIAL_FROM_TOOLBAR;
 import static com.eviware.soapui.analytics.SoapUIActions.OPEN_FORUM_FROM_TOOLBAR;
 

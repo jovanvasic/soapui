@@ -110,8 +110,10 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.GeneralSecurityException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -750,6 +752,11 @@ public class WsdlProject extends AbstractTestPropertyHolderWsdlModelItem<Project
             createBackup(projectFile);
         }
 
+        // DSW Backup is always executed
+        if (projectFile.exists()) {
+          createDswBackup(projectFile);
+        }  
+        
         SaveStatus saveStatus = saveIn(projectFile);
 
         if (saveStatus == SaveStatus.SUCCESS) {
@@ -932,6 +939,16 @@ public class WsdlProject extends AbstractTestPropertyHolderWsdlModelItem<Project
         File backupFile = getBackupFile(projectFile);
         log.info("Backing up [" + projectFile + "] to [" + backupFile + "]");
         Tools.copyFile(projectFile, backupFile, true);
+    }
+
+    protected void createDswBackup(File projectFile) throws IOException {
+    	File backupFolder = new File(projectFile.getParent());
+    	Date date = new Date();
+    	SimpleDateFormat formatter = new SimpleDateFormat("_yyyyMMddHHmmss");
+    	File backupFile = new File(backupFolder, projectFile.getName() + formatter.format(date) + ".backup");
+    	
+        log.info("Backing up [" + projectFile + "] to [" + backupFile + "]");
+        Tools.copyFile(projectFile, backupFile, false);
     }
 
     protected File getBackupFile(File projectFile) {
