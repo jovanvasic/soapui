@@ -12,11 +12,10 @@
     <parent>
         <groupId>com.smartbear.soapui</groupId>
         <artifactId>soapui-project</artifactId>
-        <version>5.5.0</version>
+        <version>5.5.1-dsw-SNAPSHOT</version>
     </parent>
 
     <artifactId>soapui</artifactId>
-    <version>5.5.0-dsw-01</version>
     <name>SoapUI</name>
     <url>http://www.soapui.org</url>
     <packaging>jar</packaging>
@@ -128,41 +127,7 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-
-			<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-shade-plugin</artifactId>
-		        <executions>
-		          	<execution>
-		            	<phase>package</phase>
-		            	<goals>
-		              		<goal>shade</goal>
-		            	</goals>
-		            	<configuration>
-		            		<filters>
-				        		<filter>
-				            		<artifact>*:*</artifact>
-				            		<excludes>
-				                		<exclude>META-INF/*.SF</exclude>
-				                		<exclude>META-INF/*.DSA</exclude>
-				                		<exclude>META-INF/*.RSA</exclude>
-				            		</excludes>
-				        		</filter>
-				    		</filters>   	
-		              		<transformers>
-				                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-				                	<mainClass>com.eviware.soapui.SoapUI</mainClass>
-				                </transformer>
-				                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
-				                <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer">
-				                	<addHeader>true</addHeader>
-				                </transformer>
-		              		</transformers>
-		            	</configuration>
-		          	</execution>
-		        </executions>
-			</plugin>
-		      
+					      
         </plugins>
     </build>
 
