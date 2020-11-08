@@ -46,7 +46,8 @@
 
 	<!-- DSW Actions -->
 	<tns:action id="DswImportWsdlProjectAction" actionClass="com.eviware.soapui.impl.actions.DswImportWsdlProjectAction"/>
-	
+    <tns:action id="UpdateWadlAction" actionClass="com.eviware.soapui.impl.wsdl.actions.project.UpdateWadlAction"/>
+                         
     <!-- Project Actions -->
     <tns:action id="ReloadProjectAction"
                 actionClass="com.eviware.soapui.impl.wsdl.actions.project.ReloadProjectAction"/>
@@ -106,7 +107,7 @@
                 actionClass="com.eviware.soapui.impl.wsdl.actions.iface.CreateWsdlDocumentationAction"/>
     <tns:action id="AddJMSEndpointAction"
                 actionClass="com.eviware.soapui.impl.wsdl.actions.iface.AddJMSEndpointAction"/>
-
+    
     <!-- RestService Actions -->
     <tns:action id="NewRestResourceAction"
                 actionClass="com.eviware.soapui.impl.rest.actions.service.NewRestResourceAction"/>
@@ -515,7 +516,7 @@
         <tns:actionMapping actionId="DeleteRestServiceAction" keyStroke="DELETE"/>
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="AddJMSEndpointAction"/>
-
+        <tns:actionMapping actionId="UpdateWadlAction"/>
 
     </tns:actionGroup>
 
