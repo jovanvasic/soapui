@@ -186,8 +186,30 @@ public class WorkspaceImpl extends AbstractModelItem implements Workspace {
     }
   }
 
-  private void dswCloseProject(final Project project) {
-    closeProject(project);
+  private void dswCloseProject(Project project) {
+    ProjectEncryptionStatus oldProjectEncrypt = ((WsdlProject) project).getEncryptionStatus();
+    int ix = projectList.indexOf(project);
+    if (ix == -1) {
+      throw new RuntimeException("Project [" + project.getName() + "] not available in workspace for close");
+    }
+
+    projectList.remove(ix);
+    fireProjectRemoved(project);
+    fireProjectClosed(project);
+
+    String name = project.getName();
+    project.release();
+
+    try {
+      project = ProjectFactoryRegistry.getProjectFactory(WsdlProjectFactory.WSDL_TYPE).createNew(
+          project.getPath(), this, false, name, null);
+      ((WsdlProject) project).setEncryptionStatus(oldProjectEncrypt);
+      projectList.add(ix, project);
+      fireProjectAdded(project);
+    } catch (Exception e) {
+      UISupport.showErrorMessage(messages.get("FailedToCloseProject.Error", name) + e.getMessage());
+      SoapUI.logError(e);
+    }
   }
 
   private boolean dswCreateAccessFile(final Project project) {
